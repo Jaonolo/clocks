@@ -1,0 +1,22 @@
+:root {
+    box-sizing: border-box;
+}
+
+*, *:after, *:before {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock {
+    background-color: khaki;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
