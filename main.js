@@ -1,6 +1,5 @@
-let i = 10
-
-const addClock = () => {
-    document.documentElement.style.setProperty('--time', `${i+=10}deg`)
-    document.querySelector('.pointer-container').classList.add('tick')
+const addTime = (pointer) => {
+    let current = getComputedStyle(document.documentElement).getPropertyValue(`--${pointer}`)
+    current = parseInt(current.slice(0, current.length - 3)) + 10
+    document.documentElement.style.setProperty(`--${pointer}`, `${current}deg`)
 }

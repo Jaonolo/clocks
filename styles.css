@@ -1,5 +1,6 @@
 :root {
     box-sizing: border-box;
+    --hour: 0deg
 }
 
 *, *:after, *:before {
@@ -26,7 +27,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) rotate(var(--hour));
     transform-origin: center;
 }
 
@@ -40,8 +41,4 @@ body {
     height: 50%;
     background-color: black;
     display: block;
-}
-
-.tick {
-    transform: translate(-50%, -50%) rotate(var(--time))
 }
