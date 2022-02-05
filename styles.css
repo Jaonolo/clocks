@@ -26,13 +26,13 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(var(--hour));
     transform-origin: center;
 }
 
 .hour {
     width: 5px;
     height: 150px;
+    transform: translate(-50%, -50%) rotate(var(--hour));
 }
 
 .pointer {
@@ -40,4 +40,14 @@ body {
     height: 50%;
     background-color: black;
     display: block;
+}
+
+.second {
+    width: 3px;
+    height: 200px;
+    transform: translate(-50%, -50%) rotate(var(--second));
+}
+
+.second .pointer {
+    background-color: red;
 }
