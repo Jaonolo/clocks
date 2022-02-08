@@ -1,18 +1,25 @@
-// const data = {
-//     hour: 10**3
-// }
-
 const data = {
     second: {
         value: 10**3,
-        completeLoop: 60
+        completeLoop: 60,
+        width: 3,
+        height: 200,
+        color: 'red'
     },
     hour: {
         value: 3.6 * 10 ** 6,
-        completeLoop: 12
+        completeLoop: 12,
+        width: 7,
+        height: 120
+    },
+    minute: {
+        value: 60 * 10 ** 3,
+        completeLoop: 60
     }
 }
+
 const GMT = -3
+const tickRate = 1000
 
 // const addTime = (pointer) => {
 //     let current = getComputedStyle(document.documentElement).getPropertyValue(`--${pointer}`) || '0deg'
@@ -30,6 +37,20 @@ const setTime = (pointer) => {
     document.documentElement.style.setProperty(`--${pointer}`, `${current}deg`)
 }
 
-setTime('hour')
-setInterval(setTime, 1000, 'hour')
-setInterval(setTime, 1000, 'second')
+const clock = document.querySelector('.clock')
+Object.entries(data).forEach(element => {
+    clock.innerHTML += `
+        <div 
+            style="
+                width: ${element[1].width || 5}px;
+                height: ${element[1].height || 150}px;
+                transform: translate(-50%, -50%) rotate(var(--${element[0]}));
+            "
+            class="pointer-container"
+        >
+            <div style="background-color: ${element[1].color || 'black'}" class="pointer"></div>
+        </div>
+    `
+    setTime(element[0])
+    setInterval(setTime, tickRate, element[0])
+});
