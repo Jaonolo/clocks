@@ -1,7 +1,7 @@
 const data = {
     second: {
         value: 10**3,
-        completeLoop: 60,
+        completeLoop: 10,
         width: 3,
         height: 200,
         color: 'red'
@@ -19,7 +19,7 @@ const data = {
 }
 
 const GMT = -3
-const tickRate = 1000
+const tickRate = 10
 
 // const addTime = (pointer) => {
 //     let current = getComputedStyle(document.documentElement).getPropertyValue(`--${pointer}`) || '0deg'
@@ -40,7 +40,7 @@ const setTime = (pointer) => {
 const clock = document.querySelector('.clock')
 Object.entries(data).forEach(element => {
     clock.innerHTML += `
-        <div 
+        <div
             style="
                 width: ${element[1].width || 5}px;
                 height: ${element[1].height || 150}px;
@@ -54,3 +54,24 @@ Object.entries(data).forEach(element => {
     setTime(element[0])
     setInterval(setTime, tickRate, element[0])
 });
+
+const generateClockNumbers = () => {
+
+    const border = 8
+    const angle = 1.5
+    const offsetX = `calc(50% + ${(50 - border)*Math.sin(angle)}%)`
+    const offsetY = `calc(50% - ${(50 -border)*Math.cos(angle)}%)`
+
+    document.querySelector('.clock').innerHTML += numberList.map((number) => `
+        <p
+            style="
+                top: ${offsetY};
+                left: ${offsetX}
+            "
+        >
+            ${number}
+        </p>
+    `).join('')
+}
+
+generateClockNumbers()

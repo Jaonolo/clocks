@@ -16,12 +16,13 @@ body {
 
 .clock {
     background-color: black;
-    background-image: url('6041A-3295.png');
+    /* background-image: url('6041A-3295.png'); */
     background-size: contain;
     width: 300px;
     height: 300px;
     border-radius: 50%;
     position: relative;
+    color: white
 }
 
 .pointer-container {
@@ -29,6 +30,13 @@ body {
     top: 50%;
     left: 50%;
     transform-origin: center;
+    display: none;
+}
+
+p {
+    position: absolute;
+    margin: 0;
+    transform: translate(-50%, -50%);
 }
 
 .pointer {
